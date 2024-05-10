@@ -1,0 +1,48 @@
+Yes, you can indeed run Jupyter notebooks from a Docker container directly in Visual Studio Code (VS Code). This approach allows you to use VS Code's rich development environment while leveraging the containerized Jupyter service for your PySpark tasks. Here’s how you can set it up:
+
+### Step 1: Install Necessary Extensions
+
+First, make sure you have the following extensions installed in VS Code:
+
+1. **Remote - Containers**: This extension allows VS Code to use Docker containers as a full-featured development environment.
+2. **Jupyter**: This extension enables VS Code to run Jupyter notebooks natively within the editor.
+
+You can find these extensions in the VS Code Marketplace and install them directly from there.
+
+### Step 2: Start Your Docker Container
+
+Ensure your Docker container (with Jupyter and PySpark) is running. Use the `docker-compose up` command as described earlier, or run the Docker container manually if you are not using Docker Compose.
+
+### Step 3: Connect VS Code to the Container
+
+Once the container is running, you can attach VS Code to it:
+
+1. Open the Command Palette in VS Code (using `Ctrl+Shift+P` on Windows/Linux, `Cmd+Shift+P` on macOS).
+2. Type "Remote-Containers: Attach to Running Container..." and select it.
+3. Choose the Docker container running your Jupyter/Pyspark setup from the list.
+
+### Step 4: Open Jupyter Notebook in VS Code
+
+With your environment set up and VS Code connected to your Docker container, you can now open or create Jupyter notebooks:
+
+1. Within VS Code, navigate to the Explorer view.
+2. Find the folder where your notebooks are stored (this should be the folder mounted to your Docker container).
+3. Open a `.ipynb` file, or create a new one by clicking on the New File icon, saving it with the `.ipynb` extension.
+
+### Step 5: Configure Jupyter Server Connection
+
+To run the notebooks using the Jupyter server inside your Docker container:
+
+1. Open a Jupyter notebook in VS Code.
+2. If VS Code prompts for a Jupyter server connection, choose to connect to an existing server.
+3. Enter the full URL (including the token) of the Jupyter server running in the Docker container. This URL is typically printed in the console where you started Docker (it looks something like `http://127.0.0.1:8888/?token=<your_token>`).
+
+### Step 6: Work on Your Notebook
+
+You can now use the notebook within VS Code, running cells and viewing outputs just like you would in a web-based Jupyter environment. The Jupyter extension for VS Code provides a seamless integration for running and debugging notebooks.
+
+### Step 7: Save and Exit
+
+When you're done, you can save your notebook and use the Docker Compose or Docker commands to stop your container.
+
+This setup combines the power of VS Code's editing and debugging tools with the flexibility and isolation of Docker, making it an excellent choice for development in data science and analytics projects involving PySpark and Jupyter.
